@@ -17,11 +17,12 @@ public static class TypeOfTriangleEndpoint
         {
             sidesArray = sides.Split(',')
                 .Select(s => float.Parse(s, CultureInfo.InvariantCulture))
-                .ToArray();        }
+                .ToArray();
+        }
         catch (Exception)
         {
-            return Results.BadRequest(new BaseResponse(new Error("Api.InvalidSides",
-                "Invalid sides values, correct format is: 1,2,3")));
+            return Results.BadRequest(new BaseResponse(new Error("Api.IncorrectSidesFormat",
+                "Invalid format, correct format is: 2,2,3 or 2.5,1,2.3 etc.")));
         }
 
         var typeOfTriangle = typeOfTriangleService.Handle(sidesArray);

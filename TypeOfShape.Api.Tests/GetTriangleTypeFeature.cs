@@ -29,7 +29,7 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
         content.Should().NotBeNull();
         content?.Value?.Type.Should().Be(expectedType);
     }
-    
+
     [Fact]
     public async Task Given_invalid_triangle_return_error()
     {
@@ -42,7 +42,7 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
         content?.Error?.Code.Should().Be(TriangleErrors.InvalidTriangleError.Code);
         content?.Error?.Message.Should().Be(TriangleErrors.InvalidTriangleError.Description);
     }
-    
+
     [Fact]
     public async Task Given_flat_triangle_return_error()
     {
@@ -105,7 +105,7 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
         var content = await response.Content.ReadFromJsonAsync<BaseResponse>();
 
         content.Should().NotBeNull();
-        content?.Error?.Code.Should().Be("Api.InvalidSides");
-        content?.Error?.Message.Should().Be("Invalid sides values, correct format is: 1,2,3");
+        content?.Error?.Code.Should().Be("Api.IncorrectSidesFormat");
+        content?.Error?.Message.Should().Be("Invalid format, correct format is: 2,2,3 or 2.5,1,2.3 etc.");
     }
 }

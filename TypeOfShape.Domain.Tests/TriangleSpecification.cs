@@ -37,21 +37,21 @@ public class TriangleSpecification
         result.IsError.Should().BeTrue();
         result.Errors.First().Should().Be(CommonErrors.ZeroOrNegativeSideError);
     }
-    
+
     [Fact]
     public void Constructor_should_return_error_when_invalid_triangle()
     {
         var result = Triangle.Triangle.CreateFromSides(new float[] {1, 1, 10});
-        
+
         result.IsError.Should().BeTrue();
         result.Errors.First().Should().Be(TriangleErrors.InvalidTriangleError);
     }
-    
+
     [Fact]
     public void Constructor_should_return_error_when_flat_triangle()
     {
         var result = Triangle.Triangle.CreateFromSides(new float[] {1, 1, 2});
-        
+
         result.IsError.Should().BeTrue();
         result.Errors.First().Should().Be(TriangleErrors.FlatTriangleError);
     }

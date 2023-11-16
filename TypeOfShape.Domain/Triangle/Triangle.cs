@@ -29,27 +29,16 @@ public class Triangle : IShape<TriangleTypes>
 
     public static ErrorOr<Triangle> CreateFromSides(float[] sides)
     {
-        if (sides.Length != 3)
-        {
-            return CommonErrors.ToFewSidesError;
-        }
+        if (sides.Length != 3) return CommonErrors.ToFewSidesError;
 
-        if (sides.Any(s => s <= 0))
-        {
-            return CommonErrors.ZeroOrNegativeSideError;
-        }
-        
+        if (sides.Any(s => s <= 0)) return CommonErrors.ZeroOrNegativeSideError;
+
         var sortedSides = sides.OrderBy(s => s).ToArray();
 
-        if (sortedSides[0] + sortedSides[1] < sortedSides[2])
-        {
-            return TriangleErrors.InvalidTriangleError;
-        }
+        if (sortedSides[0] + sortedSides[1] < sortedSides[2]) return TriangleErrors.InvalidTriangleError;
 
         if (Math.Abs(sortedSides[0] + sortedSides[1] - sortedSides[2]) < Tolerance)
-        {
             return TriangleErrors.FlatTriangleError;
-        }
 
         return new Triangle(sortedSides);
     }
