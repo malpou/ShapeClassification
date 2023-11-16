@@ -1,0 +1,8 @@
+### Equilateral Triangle
+GET https://localhost:7555/type-of-shape/triangle?sides=1,1,1
+
+### Isosceles Triangle
+GET https://localhost:7555/type-of-shape/triangle?sides=1,2,2
+
+### Scalene Triangle
+GET https://localhost:7555/type-of-shape/triangle?sides=1,2,3

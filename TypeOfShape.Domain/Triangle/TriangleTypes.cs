@@ -1,4 +1,4 @@
-namespace TypeOfShape.Core.Domain.Triangle;
+namespace TypeOfShape.Domain.Triangle;
 
 public enum TriangleTypes
 {

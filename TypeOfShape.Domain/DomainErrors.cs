@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace TypeOfShape.Core.Domain;
+namespace TypeOfShape.Domain;
 
 public class DomainErrors(string baseName)
 {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
-using TypeOfShape.Api;
 
-namespace TypeOfShape.AcceptanceTests;
+namespace TypeOfShape.Api.Tests;
 
 public class ApiFactory : WebApplicationFactory<IApiAssemblyMarker>;
