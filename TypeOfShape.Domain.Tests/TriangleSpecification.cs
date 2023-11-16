@@ -9,7 +9,7 @@ public class TriangleSpecification
     [Fact]
     public void Constructor_should_create_triangle_when_valid_sides()
     {
-        var sides = new float[] {1, 1, 1};
+        var sides = new double[] {1, 1, 1};
 
         var triangle = Triangle.Triangle.CreateFromSides(sides).Value;
 
@@ -19,7 +19,7 @@ public class TriangleSpecification
     [Fact]
     public void Constructor_should_return_error_when_to_few_sides()
     {
-        var sides = new float[] {1, 1};
+        var sides = new double[] {1, 1};
 
         var result = Triangle.Triangle.CreateFromSides(sides);
 
@@ -28,9 +28,9 @@ public class TriangleSpecification
     }
 
     [Theory]
-    [InlineData(new float[] {0, 1, 1})]
-    [InlineData(new float[] {-1, 1, 1})]
-    public void Constructor_should_return_error_when_zero_or_negative_side(float[] sides)
+    [InlineData(new double[] {0, 1, 1})]
+    [InlineData(new double[] {-1, 1, 1})]
+    public void Constructor_should_return_error_when_zero_or_negative_side(double[] sides)
     {
         var result = Triangle.Triangle.CreateFromSides(sides);
 
@@ -41,7 +41,7 @@ public class TriangleSpecification
     [Fact]
     public void Constructor_should_return_error_when_invalid_triangle()
     {
-        var result = Triangle.Triangle.CreateFromSides(new float[] {1, 1, 10});
+        var result = Triangle.Triangle.CreateFromSides(new double[] {1, 1, 10});
 
         result.IsError.Should().BeTrue();
         result.Errors.First().Should().Be(TriangleErrors.InvalidTriangleError);
@@ -50,17 +50,17 @@ public class TriangleSpecification
     [Fact]
     public void Constructor_should_return_error_when_flat_triangle()
     {
-        var result = Triangle.Triangle.CreateFromSides(new float[] {1, 1, 2});
+        var result = Triangle.Triangle.CreateFromSides(new double[] {1, 1, 2});
 
         result.IsError.Should().BeTrue();
         result.Errors.First().Should().Be(TriangleErrors.FlatTriangleError);
     }
 
     [Theory]
-    [InlineData(new float[] {1, 1, 1}, TriangleTypes.Equilateral)]
-    [InlineData(new float[] {2, 2, 3}, TriangleTypes.Isosceles)]
-    [InlineData(new float[] {3, 4, 5}, TriangleTypes.Scalene)]
-    public void Get_type_should_return_triangle_type_when_valid_parameters(float[] sides, TriangleTypes expected)
+    [InlineData(new double[] {1, 1, 1}, TriangleTypes.Equilateral)]
+    [InlineData(new double[] {2, 2, 3}, TriangleTypes.Isosceles)]
+    [InlineData(new double[] {3, 4, 5}, TriangleTypes.Scalene)]
+    public void Get_type_should_return_triangle_type_when_valid_parameters(double[] sides, TriangleTypes expected)
     {
         var triangle = Triangle.Triangle.CreateFromSides(sides).Value;
 

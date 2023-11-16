@@ -11,12 +11,12 @@ public static class TypeOfTriangleEndpoint
         [FromQuery] string sides,
         ITypeOfTriangleService typeOfTriangleService)
     {
-        float[] sidesArray;
+        double[] sidesArray;
 
         try
         {
             sidesArray = sides.Split(',')
-                .Select(s => float.Parse(s, CultureInfo.InvariantCulture))
+                .Select(s => double.Parse(s, CultureInfo.InvariantCulture))
                 .ToArray();
         }
         catch (Exception)

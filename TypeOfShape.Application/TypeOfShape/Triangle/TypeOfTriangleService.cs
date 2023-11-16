@@ -4,7 +4,7 @@ namespace TypeOfShape.Application.TypeOfShape.Triangle;
 
 public class TypeOfTriangleService : ITypeOfTriangleService
 {
-    public ErrorOr<TriangleTypes> Handle(float[] sides)
+    public ErrorOr<TriangleTypes> Handle(double[] sides)
     {
         var triangle = Domain.Triangle.Triangle.CreateFromSides(sides);
 

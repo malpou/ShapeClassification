@@ -19,6 +19,11 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
     [InlineData("1,2,2", "Isosceles")]
     [InlineData("2.2,2.5,1", "Scalene")]
     [InlineData("0.3,0.3,0.3", "Equilateral")]
+    [InlineData("0.00000002,0.00000002,0.00000002", "Equilateral")]
+    [InlineData("2000000,2000001,2000000", "Isosceles")]
+    [InlineData("2000000,2000000.00000002,2000000", "Isosceles")]
+    [InlineData("2000000,2000000.00000002,2000000.00000005", "Scalene")]
+    [InlineData("2000000,2000000.00000002,2000001.00000005", "Scalene")]
     public async Task Given_valid_sides_return_type_of_triangle(string sides, string expectedType)
     {
         var response = await _client.GetAsync(BasePath(sides));
