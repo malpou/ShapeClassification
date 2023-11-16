@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using TypeOfShape.Contracts;
 using TypeOfShape.Domain.Errors;
+using TypeOfShape.Domain.Triangle.Errors;
 
 namespace TypeOfShape.Api.Tests;
 
@@ -15,8 +16,8 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
 
     [Theory]
     [InlineData("1,1,1", "Equilateral")]
-    [InlineData("1,1,2", "Isosceles")]
-    [InlineData("1,2,3", "Scalene")]
+    [InlineData("1,2,2", "Isosceles")]
+    [InlineData("2.2,2.5,1", "Scalene")]
     [InlineData("0.3,0.3,0.3", "Equilateral")]
     public async Task Given_valid_sides_return_type_of_triangle(string sides, string expectedType)
     {
@@ -27,6 +28,32 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
         var content = await response.Content.ReadFromJsonAsync<BaseResponse<TypeOfShapeResponse>>();
         content.Should().NotBeNull();
         content?.Value?.Type.Should().Be(expectedType);
+    }
+    
+    [Fact]
+    public async Task Given_invalid_triangle_return_error()
+    {
+        var response = await _client.GetAsync(BasePath("1,1,10"));
+
+        response.Should().NotBeNull();
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        var content = await response.Content.ReadFromJsonAsync<BaseResponse>();
+        content.Should().NotBeNull();
+        content?.Error?.Code.Should().Be(TriangleErrors.InvalidTriangleError.Code);
+        content?.Error?.Message.Should().Be(TriangleErrors.InvalidTriangleError.Description);
+    }
+    
+    [Fact]
+    public async Task Given_flat_triangle_return_error()
+    {
+        var response = await _client.GetAsync(BasePath("1,1,2"));
+
+        response.Should().NotBeNull();
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        var content = await response.Content.ReadFromJsonAsync<BaseResponse>();
+        content.Should().NotBeNull();
+        content?.Error?.Code.Should().Be(TriangleErrors.FlatTriangleError.Code);
+        content?.Error?.Message.Should().Be(TriangleErrors.FlatTriangleError.Description);
     }
 
     [Theory]

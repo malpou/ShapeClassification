@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Mvc;
 using TypeOfShape.Application.TypeOfShape.Triangle;
 using TypeOfShape.Contracts;
 
@@ -14,8 +15,9 @@ public static class TypeOfTriangleEndpoint
 
         try
         {
-            sidesArray = sides.Split(',').Select(float.Parse).ToArray();
-        }
+            sidesArray = sides.Split(',')
+                .Select(s => float.Parse(s, CultureInfo.InvariantCulture))
+                .ToArray();        }
         catch (Exception)
         {
             return Results.BadRequest(new BaseResponse(new Error("Api.InvalidSides",
