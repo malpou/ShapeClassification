@@ -21,7 +21,3 @@ GET https://localhost:7555/type-of-shape/triangle?sides=1,2,3
 
 ### Invalid Triangle
 GET https://localhost:7555/type-of-shape/triangle?sides=1.0053,2,4.5
-
-
-### 
-GET https://localhost:7555/type-of-shape/triangle?sides=0.00000002,0.00000002,0.00000002
