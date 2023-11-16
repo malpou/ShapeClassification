@@ -6,3 +6,12 @@ GET https://localhost:7555/type-of-shape/triangle?sides=1,2,2
 
 ### Scalene Triangle
 GET https://localhost:7555/type-of-shape/triangle?sides=1,2,3
+
+### Float values
+GET https://localhost:7555/type-of-shape/triangle?sides=1.1,2.2,3.3
+
+### Negative values
+GET https://localhost:7555/type-of-shape/triangle?sides=-1,-2,-3
+
+### Zero values
+GET https://localhost:7555/type-of-shape/triangle?sides=0,0,0
