@@ -21,9 +21,9 @@ And **2 test projects**:
  - **Domain.Tests** - Unit tests for the domain logic
 
 ### Usage
-The Web API is hosted on `https://localhost:7555` and `http://localhost:6555`. 
+The Web API is hosted on `https://typeofshape.azurewebsites.net/`. 
 
-The API has one endpoint: `/type-of-shape/triangle`. The endpoint accepts a `GET` request with a Query param called sides `ides=202,205,196`.
+The API has one endpoint: `/triangle`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196`.
 The sides query param is a comma-separated list of integers or floats (using `.` as a decimal separator). 
 
 The endpoint returns a JSON response with the type of triangle and the sides of the triangle.
@@ -62,3 +62,4 @@ The solution uses the following packages:
 - **FluentAssertions** - A package providing fluent assertions for unit testing
 - **Microsoft.AspNetCore.Mvc.Testing** - A package providing a WebApplicationFactory for integration testing
 - **coverlet.collector** - A package providing code coverage for unit testing
+- 

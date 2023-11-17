@@ -11,7 +11,7 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
 
     private static string BasePath(string sides)
     {
-        return $"type-of-shape/triangle?sides={sides}";
+        return $"triangle?sides={sides}";
     }
 
     [Theory]
