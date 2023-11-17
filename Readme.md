@@ -12,7 +12,7 @@ The solution is written as a .Net Web API project.
 
 The solution is structured in **4 source projects**:
 - **Api** - The Web API project (this is the project that is started when the application is started)
-- **Application** - The application logic (the core of the application, this is limited in this case, but in a real-world application, this would be the place to put the application logic)
+- **Application** - The application logic (the core of the application; this is limited in this case, but in a real-world application, this would be the place to put the application logic)
 - **Domain** - The domain model and logic (business logic of the application)
 - **Contracts** - The contracts for the application (response records in this case)
 - 
@@ -24,7 +24,7 @@ And **2 test projects**:
 The Web API is hosted on `https://typeofshape.azurewebsites.net/`. 
 
 The API has one endpoint: `/triangle`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196`.
-The sides query param is a comma-separated list of integers or floats (using `.` as a decimal separator). 
+The sides query param is a comma-separated list of integers or doubles (using `.` as a decimal separator). 
 
 The endpoint returns a JSON response with the type of triangle and the sides of the triangle.
 ```json
@@ -36,7 +36,7 @@ The endpoint returns a JSON response with the type of triangle and the sides of 
 ```
 In the `TypeOfShape.Api` project, there is a `TypeOfTriangle.http` file that can be used to test the API.
 
-There are 3 different host environments for the http file that can be used:
+Three different host environments for the HTTP file can be used:
 - **prod** - The production environment (the deployed API on Azure)
 - **local-https** - The local environment using https
 - **local-http** - The local environment using http
