@@ -1,6 +1,6 @@
 ﻿namespace TypeOfShape.Domain.Triangle.Errors;
 
-public class TriangleErrors
+public static class TriangleErrors
 {
     private static readonly DomainErrors Errors = new(nameof(TriangleErrors));
 
