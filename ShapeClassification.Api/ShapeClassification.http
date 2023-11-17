@@ -1,0 +1,26 @@
+### Equilateral Triangle
+GET {{host}}/shape?sides=1,1,1
+
+### Isosceles Triangle
+GET {{host}}/shape?sides=1,2,2
+
+### Scalene Triangle
+GET {{host}}/shape?sides=202,205,196
+
+### Float values
+GET {{host}}/shape?sides=2.1,2.2,3.3
+
+### Wrong number of sides
+GET {{host}}/shape?sides=1,2
+
+### Negative values
+GET {{host}}/shape?sides=-1,-2,-3
+
+### Zero values
+GET {{host}}/shape?sides=0,0,0
+
+### Flat Triangle
+GET {{host}}/shape?sides=1,2,3
+
+### Invalid Triangle
+GET {{host}}/shape?sides=1.0053,2,4.5

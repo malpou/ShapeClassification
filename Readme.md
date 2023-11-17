@@ -23,14 +23,21 @@ And **2 test projects**:
 ### Usage
 The Web API is hosted on `https://typeofshape.azurewebsites.net/`. 
 
-The API has one endpoint: `/triangle`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196`.
+The API has one endpoint: `/shape`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196` (for now the endpoint only supports triangles, the endpoint could easily be extended to support quadrants as an example).
+
 The sides query param is a comma-separated list of integers or doubles (using `.` as a decimal separator). 
 
-The endpoint returns a JSON response with the type of triangle and the sides of the triangle.
+The endpoint returns a JSON response with classification of the shape, type of the shape and the sides of the requested shape.
 ```json
 {
   "value": {
-    "type": "Scalene"
+    "type": "Scalene",
+    "shape": "Triangle",
+    "sides": [
+      202,
+      205,
+      196
+    ]
   }
 }
 ```
