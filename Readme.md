@@ -21,7 +21,7 @@ And **2 test projects**:
  - **Domain.Tests** - Unit tests for the domain logic
 
 ### Usage
-The Web API is hosted on `https://typeofshape.azurewebsites.net/`. 
+The Web API is hosted on `https://shapeclassification.azurewebsites.net`. 
 
 The API has one endpoint: `/shape`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196` (for now the endpoint only supports triangles, the endpoint could easily be extended to support quadrants as an example).
 
@@ -31,8 +31,8 @@ The endpoint returns a JSON response with classification of the shape, type of t
 ```json
 {
   "value": {
-    "type": "Scalene",
-    "shape": "Triangle",
+    "classification": "Scalene",
+    "type": "Triangle",
     "sides": [
       202,
       205,
@@ -41,7 +41,7 @@ The endpoint returns a JSON response with classification of the shape, type of t
   }
 }
 ```
-In the `TypeOfShape.Api` project, there is a `TypeOfTriangle.http` file that can be used to test the API.
+In the `TypeOfShape.Api` project, there is a `ShapeClassification.http` file that can be used to test the API.
 
 Three different host environments for the HTTP file can be used:
 - **prod** - The production environment (the deployed API on Azure)
