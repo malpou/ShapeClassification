@@ -23,11 +23,11 @@ And **2 test projects**:
 ### Usage
 The Web API is hosted on `https://shapeclassification.azurewebsites.net`. 
 
-The API has one endpoint: `/shape`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196` (for now the endpoint only supports triangles, the endpoint could easily be extended to support quadrants as an example).
+The API has one endpoint: `/shape`. The endpoint accepts a `GET` request with a Query param called sides `?sides=202,205,196` (for now, the endpoint only supports triangles; the endpoint could easily be extended to support quadrants, for example).
 
 The sides query param is a comma-separated list of integers or doubles (using `.` as a decimal separator). 
 
-The endpoint returns a JSON response with classification of the shape, type of the shape and the sides of the requested shape.
+The endpoint returns a JSON response with the classification of the shape, the type, and the sides of the requested shape.
 ```json
 {
   "value": {
@@ -45,8 +45,8 @@ In the `TypeOfShape.Api` project, there is a `ShapeClassification.http` file tha
 
 Three different host environments for the HTTP file can be used:
 - **prod** - The production environment (the deployed API on Azure)
-- **local-https** - The local environment using https
-- **local-http** - The local environment using http
+- **local-https** - The local environment using HTTPS
+- **local-http** - The local environment using HTTP
 
 #### Error handling
 The API contains error handling for the following cases:
