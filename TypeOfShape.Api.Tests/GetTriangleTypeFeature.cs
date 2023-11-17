@@ -64,6 +64,8 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
     [Theory]
     [InlineData("-1,1,1")]
     [InlineData("1,0,1")]
+    [InlineData("NaN,2,4.5")]
+    [InlineData("Infinity,2,4.5")]
     public async Task Given_negative_and_zero_values_in_sides_return_error(string sides)
     {
         var response = await _client.GetAsync(BasePath(sides));

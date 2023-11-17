@@ -41,7 +41,7 @@ public class Triangle : IShape<TriangleTypes>
         }
 
         // a triangle is invalid if any of the sides are less than or equal to zero
-        if (sides.Any(s => s <= 0))
+        if (sides.Any(s => s <= 0 || double.IsNaN(s) || double.IsInfinity(s)))
         {
             return CommonErrors.ZeroOrNegativeSideError;
         }
