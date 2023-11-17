@@ -35,7 +35,7 @@ public class ShapeClassificationEndpointHandler
             var classification = shape.Value.GetClassification();
             var type = shape.Value.GetShapeType();
             
-            logger.LogInformation("Type of triangle: {type} for '{sides}'", classification, sides);
+            logger.LogInformation("Type of {type}: {classification} for '{sides}'", type, classification, sides);
             
             var response = new ShapeClassificationResponse(classification, type, sidesArray);
             
