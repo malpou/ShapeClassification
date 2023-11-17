@@ -22,7 +22,7 @@ public static class TypeOfTriangleEndpoint
         catch (Exception)
         {
             return Results.BadRequest(new BaseResponse(new Error("Api.IncorrectSidesFormat",
-                "Invalid format, correct format is: 2,2,3 or 2.5,1,2.3 etc.")));
+                "Invalid format, correct format is: sides=2,2,3 or sides=2.5,1,2.3 etc.")));
         }
 
         var typeOfTriangle = typeOfTriangleService.Handle(sidesArray);

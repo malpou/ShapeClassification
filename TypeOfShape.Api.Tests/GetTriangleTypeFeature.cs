@@ -111,6 +111,6 @@ public class GetTriangleTypeFeature(ApiFactory factory) : IClassFixture<ApiFacto
 
         content.Should().NotBeNull();
         content?.Error?.Code.Should().Be("Api.IncorrectSidesFormat");
-        content?.Error?.Message.Should().Be("Invalid format, correct format is: 2,2,3 or 2.5,1,2.3 etc.");
+        content?.Error?.Message.Should().Be("Invalid format, correct format is: sides=2,2,3 or sides=2.5,1,2.3 etc.");
     }
 }
