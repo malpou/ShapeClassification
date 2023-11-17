@@ -5,11 +5,12 @@ using TypeOfShape.Contracts;
 
 namespace TypeOfShape.Api.Endpoints.TypeOfShape;
 
-public static class TypeOfTriangleEndpoint
+public class TypeOfTriangleEndpoint
 {
     public static IResult Handle(
         [FromQuery] string sides,
-        ITypeOfTriangleService typeOfTriangleService)
+        [FromServices] ITypeOfTriangleService typeOfTriangleService,
+        [FromServices] ILogger<TypeOfTriangleEndpoint> logger)
     {
         double[] sidesArray;
 
@@ -21,6 +22,8 @@ public static class TypeOfTriangleEndpoint
         }
         catch (Exception)
         {
+            logger.LogError("Incorrect sides format: '{sides}'", sides);
+            
             return Results.BadRequest(new BaseResponse(new Error("Api.IncorrectSidesFormat",
                 "Invalid format, correct format is: sides=2,2,3 or sides=2.5,1,2.3 etc.")));
         }
@@ -28,10 +31,18 @@ public static class TypeOfTriangleEndpoint
         var typeOfTriangle = typeOfTriangleService.Handle(sidesArray);
 
         if (!typeOfTriangle.IsError)
+        {
+            var type = typeOfTriangle.Value.ToString();
+            
+            logger.LogInformation("Type of triangle: {type} for '{sides}'", type, sides);
+            
             return Results.Ok(
-                new BaseResponse<TypeOfShapeResponse>(new TypeOfShapeResponse(typeOfTriangle.Value.ToString())));
+                new BaseResponse<TypeOfShapeResponse>(new TypeOfShapeResponse(type)));
+        }
+            
         var error = typeOfTriangle.FirstError;
-
+        
+        logger.LogError("Error: {code} for '{sides}'", error.Code, sides);
         return Results.BadRequest(new BaseResponse(new Error(error.Code, error.Description)));
     }
 }
