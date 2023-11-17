@@ -55,3 +55,12 @@ Example error response:
 }
 ```
 
+### Packages
+The solution uses the following packages:
+#### Source projects
+- **ErrorOr** - A package providing a fluent discriminated union for error and result handling
+#### Test projects
+- **xunit** - A unit testing framework
+- **FluentAssertions** - A package providing fluent assertions for unit testing
+- **Microsoft.AspNetCore.Mvc.Testing** - A package providing a WebApplicationFactory for integration testing
+- **coverlet.collector** - A package providing code coverage for unit testing
