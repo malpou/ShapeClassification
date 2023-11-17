@@ -36,6 +36,11 @@ The endpoint returns a JSON response with the type of triangle and the sides of 
 ```
 In the `TypeOfShape.Api` project, there is a `TypeOfTriangle.http` file that can be used to test the API.
 
+There are 3 different host environments for the http file that can be used:
+- **prod** - The production environment (the deployed API on Azure)
+- **local-https** - The local environment using https
+- **local-http** - The local environment using http
+
 #### Error handling
 The API contains error handling for the following cases:
 - The sides provided are not able to be parsed into a list of numbers
