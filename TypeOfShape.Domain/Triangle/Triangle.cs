@@ -54,7 +54,7 @@ public class Triangle : IShape<TriangleTypes>
             return TriangleErrors.InvalidTriangleError;
         }
 
-        // a triangle is flat if the sum of two sides is equal to the third side
+        // a triangle is flat if the longest side is equal to the sum of the two remaining ones
         if (!(sortedSides[0] + sortedSides[1] > sortedSides[2]))
         {
             return TriangleErrors.FlatTriangleError;
