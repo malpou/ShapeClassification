@@ -15,7 +15,7 @@ The solution is structured in **4 source projects**:
 - **Application** - The application logic (the core of the application; this is limited in this case, but in a real-world application, this would be the place to put the application logic)
 - **Domain** - The domain model and logic (business logic of the application)
 - **Contracts** - The contracts for the application (response records in this case)
-- 
+  
 And **2 test projects**:
  - **Api.Tests** - Integration tests for the Web API testing the full from request to response (using the WebApplicationFactory)
  - **Domain.Tests** - Unit tests for the domain logic
