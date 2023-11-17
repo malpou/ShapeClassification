@@ -62,4 +62,3 @@ The solution uses the following packages:
 - **FluentAssertions** - A package providing fluent assertions for unit testing
 - **Microsoft.AspNetCore.Mvc.Testing** - A package providing a WebApplicationFactory for integration testing
 - **coverlet.collector** - A package providing code coverage for unit testing
-- 
